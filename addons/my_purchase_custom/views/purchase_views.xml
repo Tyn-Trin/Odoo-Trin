@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_inherit_inventory" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.inventory</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='purchase_delivery_invoice']" position="after">
+                <page string="Inventory Detail" name="inventory_detail">
+                    <group string="Delivery Info">
+                        <group>
+                            <field name="date_planned" string="Scheduled Receipt Date"/>
+                            <field name="dest_address_id" string="Delivery Address"/>
+                            <field name="incoterm_id" string="Incoterm"/>
+                        </group>
+                        <group>
+                            <field name="origin" string="Source Document"/>
+                        </group>
+                    </group>
+
+                    <group string="Stock Forecast per Product">
+                        <field name="order_line" readonly="1" nolabel="1">
+                            <list string="Forecast">
+                                <field name="product_id" string="Product"/>
+                                <field name="product_qty" string="Ordered Qty"/>
+                                <field name="qty_forecast" string="Forecast"/>
+                                <field name="product_uom_id" groups="uom.group_uom" string="Unit"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
