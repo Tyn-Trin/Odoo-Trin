@@ -1,0 +1,3 @@
+zba6-3c7a-23wf
+
+python odoo-bin --dev=all -d odoo
